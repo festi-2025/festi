@@ -1,0 +1,410 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* Celeste suave veraniego (fondo) */
+    color: #212121; /* Texto oscuro para contrastar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 2.5em;
+    color: #ff4081; /* Rosa vibrante veraniego (título principal) */
+    padding: 20px;
+}
+
+/* Sección de Organizadores */
+.organizers-section {
+    padding: 30px 20px;
+    text-align: center;
+    background-color: #fffde7; /* Amarillo claro veraniego (sección) */
+    margin: 30px auto;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.5); /* Sombra rosa suave */
+}
+
+.organizers-section h2 {
+    color: #29b6f6; /* Azul claro veraniego (título sección) */
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.organizers-section p {
+    color: #424242;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.organizers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.organizer {
+    text-align: center;
+    background-color: #f0f4c3; /* Verde claro pálido veraniego (tarjeta) */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.organizer h3 {
+    margin: 10px 0;
+    font-size: 1.4em;
+    color: #2e7d32; /* Verde oscuro veraniego (nombre) */
+}
+
+.organizer p {
+    font-size: 0.95em;
+    color: #616161;
+    margin-bottom: 10px;
+}
+
+.organizer .course {
+    font-size: 0.9em;
+    color: #ff4081; /* Rosa vibrante veraniego (curso) */
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #00bcd4; /* Turquesa vibrante veraniego (barra) */
+    color: white;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    font-size: 1.4rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-links li a:hover {
+    color: #e0f7fa; /* Celeste muy claro al pasar el mouse */
+    opacity: 0.8;
+}
+
+.hamburger {
+    cursor: pointer;
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+
+.hamburger svg {
+    display: block;
+}
+
+.hamburger rect {
+    fill: white;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.hamburger.open rect:nth-child(1) {
+    transform: translateY(12.5px) rotate(45deg);
+}
+
+.hamburger.open rect:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open rect:nth-child(3) {
+    transform: translateY(-12.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Footer */
+footer {
+    background: #00bcd4; /* Turquesa vibrante veraniego (footer) */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+    footer {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Botón ovalado de FAQ */
+#faq-oval {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+#open-faq-modal {
+    background-color: #ffcc80; /* Naranja pálido veraniego (botón FAQ) */
+    color: #212121;
+    border: none;
+    border-radius: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+#open-faq-modal:hover {
+    background-color: #ffb347;
+}
+
+/* Modal de FAQ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 8px;
+    position: relative;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #00bcd4; /* Turquesa vibrante veraniego (título modal) */
+}
+
+.modal-content dt {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #2e7d32; /* Verde oscuro veraniego (pregunta) */
+}
+
+.modal-content dd {
+    margin-left: 0;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    color: #616161;
+}
+
+.modal .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.modal .close-button:hover,
+.modal .close-button:focus {
+    color: #f44336; /* Rojo para el cierre */
+    cursor: pointer;
+}
+
+/* Countdown Flotante (colores veraniegos) */
+#floating-countdown {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 188, 212, 0.7); /* Turquesa semi-transparente veraniego */
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#floating-countdown.collapsed {
+    transform: translateX(100%);
+}
+
+#toggle-countdown {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 0;
+}
+
+#countdown-inner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#countdown-inner div {
+    text-align: center;
+}
+
+#countdown-inner span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Responsive para el countdown */
+@media (max-width: 600px) {
+    #floating-countdown {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px;
+    }
+
+    #toggle-countdown {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+
+    #countdown-inner {
+        gap: 5px;
+    }
+
+    #countdown-inner span {
+        font-size: 1.2rem;
+    }
+
+    #countdown-inner div {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .sidebar-menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #80deea; /* Turquesa claro veraniego para el menú lateral */
+        color: #212121;
+        z-index: 1001;
+        padding-top: 60px;
+        transition: left 0.3s ease-in-out;
+        box-sizing: border-box;
+    }
+
+    .sidebar-menu.open {
+        left: 0;
+    }
+
+    .sidebar-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-menu ul li a {
+        display: block;
+        color: #212121;
+        padding: 1rem;
+        text-decoration: none;
+        border-bottom: 1px solid #b2ebf2;
+    }
+
+    .sidebar-menu ul li:last-child a {
+        border-bottom: none;
+    }
+
+    .sidebar-menu .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #212121;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar-menu {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.2rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Festi 2025</title>
+    <link rel="stylesheet" href="festival-inicio.css" />
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="navbar-container">
+        <a href="festival-inicio.html" class="logo">FESTI 2025</a>
+        <ul class="nav-links">
+        <li><a href="festival-inicio.html">Inicio</a></li>
+        <li><a href="postulacio.html">¿Cómo me postulo?</a></li>
+        <li><a href="organizadores.html">Organizadores</a></li>
+        <li><a href="rifas.html">Rifas y sorteos</a></li>
+        <li><a href="contactanos.html">Contáctanos</a></li>
+        <li><a href="vivo.html">Vivo</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <svg viewBox="0 0 100 80" width="30" height="30">
+                <rect width="100" height="15" rx="8"></rect>
+                <rect y="30" width="100" height="15" rx="8"></rect>
+                <rect y="60" width="100" height="15" rx="8"></rect>
+            </svg>
+        </div>
+    </div>
+</nav>
+
+<div class="sidebar-menu" id="sidebar-menu">
+    <div class="close-button" id="close-sidebar">×</div>
+    <ul>
+        <li><a href="festival-inicio.html">Inicio</a></li>
+        <li><a href="postulacio.html">¿Cómo me postulo?</a></li>
+        <li><a href="organizadores.html">Organizadores</a></li>
+        <li><a href="rifas.html">Rifas y sorteos</a></li>
+        <li><a href="contactanos.html">Contáctanos</a></li>
+        <li><a href="vivo.html">Vivo</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+    </ul>
+</div>
+
+<div id="father-day-raffle" class="raffle-notice">
+    <span id="close-raffle" class="close-button">X</span>
+    <h3>¡Rifa Día del Padre!</h3>
+    <p>Ganá increíbles premios para papá:</p>
+    <ol>
+        <li>Kit parrillero</li>
+        <li>Set matero</li>
+        <li>¡Sorpresa!</li>
+    </ol>
+    <p>Valor del número: $1500</p>
+    <a href="festival-inicio.html" class="raffle-details-btn">Ver más</a>
+</div>
+
+    <main>
+        <section id="hero">
+            <h1>¡Prepárate para el Festi 2025!</h1>
+            <p>El Festi es el evento más esperado del año en nuestro colegio...</p>
+        </section>
+
+        <section id="que-espera" class="content-box">
+            <h2 class="centered-title">¿Qué te espera?</h2>
+            <ul>
+                <li>🎤 Bandas en vivo y artistas invitados</li>
+                <li>🍔 Patio de comidas</li>
+                <li>🎨 Muestra de arte y feria creativa</li>
+                <li>🎁 Sorteos y premios</li>
+                <li>🎬 Video sorpresa de los estudiantes</li>
+            </ul>
+        </section>
+
+        <section id="que-es-festi" class="content-box">
+            <h2 class="centered-title">¿Qué es el Festi?</h2>
+            <p>El Festi es una celebración de la creatividad estudiantil...</p>
+        </section>
+
+        <section id="playlist" class="content-box">
+            <h2 class="centered-title">¡Escuchá la playlist del Festi!</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1G5mCpcZACGaIjo8wP7BPp" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </section>
+    </main>
+
+    <div id="floating-countdown" class="collapsed">
+        <button id="toggle-countdown">❯</button>
+        <div id="countdown-inner">
+            <div><span id="days"></span><br>Días</div>
+            <div><span id="hours"></span><br>Horas</div>
+            <div><span id="minutes"></span><br>Min</div>
+            <div><span id="seconds"></span><br>Seg</div>
+        </div>
+    </div>
+
+    <div id="faq-oval">
+        <button id="open-faq-modal">?</button>
+    </div>
+
+    <div id="faq-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Preguntas Frecuentes</h2>
+            <dl>
+                <dt>¿Cuál es la fecha del festival?</dt>
+                <dd>El Festi 2025 se llevará a cabo los días 17 y 18 de mayo de 2025.</dd>
+                <dt>¿Dónde se realizará el festival?</dt>
+                <dd>[Lugar del Evento]. Mantente atento a nuestras redes para la dirección exacta.</dd>
+                <dt>¿Ya se anunció el line-up?</dt>
+                <dd>Estamos trabajando en el increíble line-up de este año. ¡Síguenos para ser el primero en saberlo!</dd>
+            </dl>
+        </div>
+    </div>
+
+    <section id="preguntas-frecuentes" class="content-box" style="display: none;">
+        <h2 class="centered-title">Preguntas Frecuentes (Sección original oculta)</h2>
+        <dl>
+            <dt>¿Cuál es la fecha del festival?</dt>
+            <dd>El Festi 2025 se llevará a cabo los días 17 y 18 de mayo de 2025.</dd>
+            <dt>¿Dónde se realizará el festival?</dt>
+            <dd>[Lugar del Evento]. Mantente atento a nuestras redes para la dirección exacta.</dd>
+            <dt>¿Ya se anunció el line-up?</dt>
+            <dd>Estamos trabajando en el increíble line-up de este año. ¡Síguenos para ser el primero en saberlo!</dd>
+        </dl>
+    </section>
+
+    <footer>
+        <p>© 2025 Festi. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="festival-inicio.js"></script>
+</body>
+</html>
