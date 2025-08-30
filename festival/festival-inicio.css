@@ -452,3 +452,26 @@ footer {
     background-color: #ff8a65; /* Un naranja ligeramente más oscuro al pasar el mouse */
 
 }
+.inicio-box {
+    background: #ffffff; /* fondo blanco */
+    border: 2px solid #00bcd4; /* borde turquesa */
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* sombra más marcada */
+    max-width: 800px;
+    width: 100%;
+}
+
+.inicio-box h2 {
+    color: #00bcd4; /* título turquesa */
+    margin-bottom: 1rem;
+}
+
+.inicio-box p {
+    color: #444;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
