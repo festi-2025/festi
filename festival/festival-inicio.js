@@ -1,99 +1,87 @@
-const floatingCountdown = document.getElementById('floating-countdown');
-const toggleButton = document.getElementById('toggle-countdown');
-const faqOvalButton = document.getElementById('open-faq-modal');
-const faqModal = document.getElementById('faq-modal');
-const closeModalButton = faqModal.querySelector('.close-button');
-const hamburger = document.getElementById('hamburger');
-const sidebarMenu = document.getElementById('sidebar-menu');
-const closeSidebarButton = document.getElementById('close-sidebar');
-const sidebarLinks = sidebarMenu.querySelectorAll('a');
+document.addEventListener('DOMContentLoaded', function () {
+    // ELEMENTOS GENERALES
+    const floatingCountdown = document.getElementById('floating-countdown');
+    const toggleButton = document.getElementById('toggle-countdown');
+    const faqOvalButton = document.getElementById('open-faq-modal');
+    const faqModal = document.getElementById('faq-modal');
+    const closeModalButton = faqModal ? faqModal.querySelector('.close-button') : null;
+    const hamburger = document.getElementById('hamburger');
+    const sidebarMenu = document.getElementById('sidebar-menu');
+    const closeSidebarButton = document.getElementById('close-sidebar');
+    const sidebarLinks = sidebarMenu ? sidebarMenu.querySelectorAll('a') : [];
 
-const daysSpan = document.getElementById('days');
-const hoursSpan = document.getElementById('hours');
-const minutesSpan = document.getElementById('minutes');
-const secondsSpan = document.getElementById('seconds');
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
 
-// Fecha objetivo: Festi - 31 de octubre de 2025 a las 00:00 (hora -03:00)
-const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
+    // ========================
+    // CUENTA REGRESIVA FESTI
+    // ========================
+    const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
 
-function formatTimeUnit(unit) {
-    return unit.toString().padStart(2, '0');
-}
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = festiDate - now;
-
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        daysSpan.textContent = '¡Festi!';
-        hoursSpan.textContent = '¡Ya!';
-        minutesSpan.textContent = 'Está';
-        secondsSpan.textContent = 'Aquí!';
-        return;
+    function formatTimeUnit(unit) {
+        return unit.toString().padStart(2, '0');
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = festiDate - now;
 
-    daysSpan.textContent = days;
-    hoursSpan.textContent = formatTimeUnit(hours);
-    minutesSpan.textContent = formatTimeUnit(minutes);
-    secondsSpan.textContent = formatTimeUnit(seconds);
-}
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            if (daysSpan) daysSpan.textContent = '¡Festi!';
+            if (hoursSpan) hoursSpan.textContent = '¡Ya!';
+            if (minutesSpan) minutesSpan.textContent = 'Está';
+            if (secondsSpan) secondsSpan.textContent = 'Aquí!';
+            return;
+        }
 
-// Funcionalidad del modal de Preguntas Frecuentes
-faqOvalButton.addEventListener('click', () => {
-    faqModal.style.display = 'block';
-});
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-closeModalButton.addEventListener('click', () => {
-    faqModal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target == faqModal) {
-        faqModal.style.display = 'none';
+        if (daysSpan) daysSpan.textContent = days;
+        if (hoursSpan) hoursSpan.textContent = formatTimeUnit(hours);
+        if (minutesSpan) minutesSpan.textContent = formatTimeUnit(minutes);
+        if (secondsSpan) secondsSpan.textContent = formatTimeUnit(seconds);
     }
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    const closeRaffleBtn = document.getElementById('close-raffle');
-    const raffleNotice = document.getElementById('father-day-raffle');
-    if (closeRaffleBtn && raffleNotice) {
-        setTimeout(() => {
-            raffleNotice.classList.add('show');
-        }, 100);
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
 
-        closeRaffleBtn.addEventListener('click', function() {
-            raffleNotice.style.display = 'none';
+    // ========================
+    // TOGGLE DEL CONTADOR FLOTANTE
+    // ========================
+    if (floatingCountdown && toggleButton) {
+        floatingCountdown.classList.add('collapsed');
+        toggleButton.textContent = '❯';
+
+        toggleButton.addEventListener('click', () => {
+            floatingCountdown.classList.toggle('collapsed');
+            toggleButton.textContent = floatingCountdown.classList.contains('collapsed') ? '❯' : '❮';
+        });
+    }
+
+    // ========================
+    // MODAL DE PREGUNTAS FRECUENTES
+    // ========================
+    if (faqOvalButton && faqModal && closeModalButton) {
+        faqOvalButton.addEventListener('click', () => {
+            faqModal.style.display = 'block';
         });
 
-        const raffleDetailsLink = document.querySelector('.raffle-details-btn');
-        if (raffleDetailsLink) {
-            raffleDetailsLink.addEventListener('click', function(event) {
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    event.preventDefault();
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
+        closeModalButton.addEventListener('click', () => {
+            faqModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === faqModal) {
+                faqModal.style.display = 'none';
+            }
+        });
     }
-
-
-    // Funcionalidad del menú lateral
-    hamburger.addEventListener('click', () => {
-        sidebarMenu.classList.add('open');
-    });
-
-    closeSidebarButton.addEventListener('click', () => {
-        sidebarMenu.classList.remove('open');
-    });
-
     // Cerrar el menú lateral al hacer clic en un enlace
     sidebarLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -108,3 +96,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+ // ========================
+    // MENÚ LATERAL (SIDEBAR)
+    // ========================
+    if (hamburger && sidebarMenu && closeSidebarButton) {
+        hamburger.addEventListener('click', () => {
+            sidebarMenu.classList.add('open');
+        });
+
+        closeSidebarButton.addEventListener('click', () => {
+            sidebarMenu.classList.remove('open');
+        });
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                sidebarMenu.classList.remove('open');
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    event.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+});
