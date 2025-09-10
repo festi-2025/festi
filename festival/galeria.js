@@ -22,47 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const añosGaleria = ['2024', '2025'];
     let indiceActual = 0;
 
-    // --- Contador Flotante ---
-    if (daysSpan && hoursSpan && minutesSpan && secondsSpan) {
-        const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = festiDate - now;
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                daysSpan.textContent = '¡Festi!';
-                hoursSpan.textContent = '¡Ya!';
-                minutesSpan.textContent = 'Está';
-                secondsSpan.textContent = 'Aquí!';
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            daysSpan.textContent = days;
-            hoursSpan.textContent = hours.toString().padStart(2, '0');
-            minutesSpan.textContent = minutes.toString().padStart(2, '0');
-            secondsSpan.textContent = seconds.toString().padStart(2, '0');
-        }
-
-        updateCountdown();
-        const countdownInterval = setInterval(updateCountdown, 1000);
-
-        if (floatingCountdown && toggleButton) {
-            floatingCountdown.classList.add('collapsed');
-            toggleButton.textContent = '❯';
-
-            toggleButton.addEventListener('click', () => {
-                floatingCountdown.classList.toggle('collapsed');
-                toggleButton.textContent = floatingCountdown.classList.contains('collapsed') ? '❯' : '❮';
-            });
-        }
-    }
 
     // --- Modal de Preguntas Frecuentes ---
     if (faqOvalButton && faqModal && closeModalButton) {
@@ -167,3 +127,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
