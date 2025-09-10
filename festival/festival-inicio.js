@@ -13,8 +13,12 @@ const hoursSpan = document.getElementById('hours');
 const minutesSpan = document.getElementById('minutes');
 const secondsSpan = document.getElementById('seconds');
 
-// Establecemos la fecha objetivo para el 8 de noviembre de 2025
+// Fecha objetivo: Festi - 31 de octubre de 2025 a las 00:00 (hora -03:00)
 const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
+
+function formatTimeUnit(unit) {
+    return unit.toString().padStart(2, '0');
+}
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -35,23 +39,10 @@ function updateCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     daysSpan.textContent = days;
-    hoursSpan.textContent = hours.toString().padStart(2, '0');
-    minutesSpan.textContent = minutes.toString().padStart(2, '0');
-    secondsSpan.textContent = seconds.toString().padStart(2, '0');
+    hoursSpan.textContent = formatTimeUnit(hours);
+    minutesSpan.textContent = formatTimeUnit(minutes);
+    secondsSpan.textContent = formatTimeUnit(seconds);
 }
-
-// Iniciar el contador
-updateCountdown();
-const countdownInterval = setInterval(updateCountdown, 1000);
-
-// Funcionalidad del botón de toggle del contador
-floatingCountdown.classList.add('collapsed');
-toggleButton.textContent = '❯';
-
-toggleButton.addEventListener('click', () => {
-    floatingCountdown.classList.toggle('collapsed');
-    toggleButton.textContent = floatingCountdown.classList.contains('collapsed') ? '❯' : '❮';
-});
 
 // Funcionalidad del modal de Preguntas Frecuentes
 faqOvalButton.addEventListener('click', () => {
@@ -115,4 +106,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
