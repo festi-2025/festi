@@ -14,7 +14,7 @@ const minutesSpan = document.getElementById('minutes');
 const secondsSpan = document.getElementById('seconds');
 
 // Establecemos la fecha objetivo para el 8 de noviembre de 2025
-const festiDate = new Date('2025-11-08T00:00:00-03:00').getTime();
+const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -115,3 +115,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
