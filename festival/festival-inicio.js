@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Funcionalidad del menú lateral
     hamburger.addEventListener('click', () => {
-        sidebarMenu.classList.add('open');
-    });
+    sidebarMenu.classList.add('open');
+});
 
-    closeSidebarButton.addEventListener('click', () => {
-        sidebarMenu.classList.remove('open');
-    });
+closeSidebarButton.addEventListener('click', () => {
+    sidebarMenu.classList.remove('open');
+});
 
     // Cerrar el menú al hacer clic en un enlace
     sidebarLinks.forEach(link => {
