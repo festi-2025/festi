@@ -1,4 +1,4 @@
-const floatingCountdown = document.getElementById('floating-countdown');
+  const floatingCountdown = document.getElementById('floating-countdown');
 const toggleButton = document.getElementById('toggle-countdown');
 const faqOvalButton = document.getElementById('open-faq-modal');
 const faqModal = document.getElementById('faq-modal');
@@ -13,8 +13,8 @@ const hoursSpan = document.getElementById('hours');
 const minutesSpan = document.getElementById('minutes');
 const secondsSpan = document.getElementById('seconds');
 
-// Establecemos la fecha objetivo para el 8 de noviembre de 2025
-const festiDate = new Date('2025-10-31T00:00:00-03:00').getTime();
+// Ajustar la fecha del Festi (ejemplo: 8 de noviembre 2025 a medianoche, hora Argentina)
+const festiDate = new Date('2025-11-08T00:00:00-03:00').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
     // Funcionalidad del menú lateral
     hamburger.addEventListener('click', () => {
         sidebarMenu.classList.add('open');
@@ -103,15 +102,20 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarMenu.classList.remove('open');
     });
 
-    // Cerrar el menú lateral al hacer clic en un enlace
+    // Cerrar el menú al hacer clic en un enlace
     sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (event) => {
             sidebarMenu.classList.remove('open');
+
             const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+            if (targetId.startsWith('#')) {
+                event.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             }
+            // si no empieza con #, es otra página, se navega normal
         });
     });
 });
