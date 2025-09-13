@@ -1,5 +1,3 @@
-const floatingCountdown = document.getElementById('floating-countdown');
-const toggleButton = document.getElementById('toggle-countdown');
 const faqOvalButton = document.getElementById('open-faq-modal');
 const faqModal = document.getElementById('faq-modal');
 const closeModalButton = faqModal.querySelector('.close-button');
@@ -7,15 +5,6 @@ const hamburger = document.getElementById('hamburger');
 const sidebarMenu = document.getElementById('sidebar-menu');
 const closeSidebarButton = document.getElementById('close-sidebar');
 const sidebarLinks = sidebarMenu.querySelectorAll('a');
-
-// Funcionalidad del botón de toggle del contador
-floatingCountdown.classList.add('collapsed');
-toggleButton.textContent = '❯';
-
-toggleButton.addEventListener('click', () => {
-    floatingCountdown.classList.toggle('collapsed');
-    toggleButton.textContent = floatingCountdown.classList.contains('collapsed') ? '❯' : '❮';
-});
 
 // Funcionalidad del modal de Preguntas Frecuentes
 faqOvalButton.addEventListener('click', () => {
@@ -33,6 +22,31 @@ window.addEventListener('click', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Funcionalidad del menú lateral
+    hamburger.addEventListener('click', () => {
+        sidebarMenu.classList.add('open');
+    });
+
+    closeSidebarButton.addEventListener('click', () => {
+        sidebarMenu.classList.remove('open');
+    });
+
+    // Cerrar el menú al hacer clic en un enlace
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            sidebarMenu.classList.remove('open');
+            const targetId = link.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                event.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    // Funcionalidad del aviso de la rifa
     const closeRaffleBtn = document.getElementById('close-raffle');
     const raffleNotice = document.getElementById('father-day-raffle');
     if (closeRaffleBtn && raffleNotice) {
@@ -56,30 +70,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-
-    // Funcionalidad del menú lateral
-    hamburger.addEventListener('click', () => {
-        sidebarMenu.classList.add('open');
-    });
-
-    closeSidebarButton.addEventListener('click', () => {
-        sidebarMenu.classList.remove('open');
-    });
-
-    // Cerrar el menú al hacer clic en un enlace
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            sidebarMenu.classList.remove('open');
-
-            const targetId = link.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                event.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-            // si no empieza con #, es otra página, se navega normal
-        });
-    });
 });
