@@ -1,4 +1,4 @@
-  const floatingCountdown = document.getElementById('floating-countdown');
+const floatingCountdown = document.getElementById('floating-countdown');
 const toggleButton = document.getElementById('toggle-countdown');
 const faqOvalButton = document.getElementById('open-faq-modal');
 const faqModal = document.getElementById('faq-modal');
@@ -7,42 +7,6 @@ const hamburger = document.getElementById('hamburger');
 const sidebarMenu = document.getElementById('sidebar-menu');
 const closeSidebarButton = document.getElementById('close-sidebar');
 const sidebarLinks = sidebarMenu.querySelectorAll('a');
-
-const daysSpan = document.getElementById('days');
-const hoursSpan = document.getElementById('hours');
-const minutesSpan = document.getElementById('minutes');
-const secondsSpan = document.getElementById('seconds');
-
-// Ajustar la fecha del Festi (ejemplo: 8 de noviembre 2025 a medianoche, hora Argentina)
-const festiDate = new Date('2025-11-08T00:00:00-03:00').getTime();
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = festiDate - now;
-
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        daysSpan.textContent = '¡Festi!';
-        hoursSpan.textContent = '¡Ya!';
-        minutesSpan.textContent = 'Está';
-        secondsSpan.textContent = 'Aquí!';
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    daysSpan.textContent = days;
-    hoursSpan.textContent = hours.toString().padStart(2, '0');
-    minutesSpan.textContent = minutes.toString().padStart(2, '0');
-    secondsSpan.textContent = seconds.toString().padStart(2, '0');
-}
-
-// Iniciar el contador
-updateCountdown();
-const countdownInterval = setInterval(updateCountdown, 1000);
 
 // Funcionalidad del botón de toggle del contador
 floatingCountdown.classList.add('collapsed');
@@ -95,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Funcionalidad del menú lateral
     hamburger.addEventListener('click', () => {
-    sidebarMenu.classList.add('open');
-});
+        sidebarMenu.classList.add('open');
+    });
 
-closeSidebarButton.addEventListener('click', () => {
-    sidebarMenu.classList.remove('open');
-});
+    closeSidebarButton.addEventListener('click', () => {
+        sidebarMenu.classList.remove('open');
+    });
 
     // Cerrar el menú al hacer clic en un enlace
     sidebarLinks.forEach(link => {
